@@ -1,0 +1,339 @@
+options {
+  MULTI = true;
+  KEEP_LINE_COLUMN = false;
+  VISITOR = true;
+}
+
+PARSER_BEGIN(QueryParser)
+
+package parser;
+
+/** An Query Grammar. */
+public class QueryParser {
+
+  /** Main entry point. */
+  public static void main(String args[]) {
+    System.out.println("Reading from standard input...");
+    QueryParser t = new QueryParser(System.in);
+    try {
+      ASTStart n = t.Start();
+      n.dump(">");
+      System.out.println("Thank you.");
+    } catch (Exception e) {
+      System.out.println("Oops.");
+      System.out.println(e.getMessage());
+      e.printStackTrace();
+    }
+  }
+}
+
+PARSER_END(QueryParser)
+
+
+SKIP :
+{
+  " "
+| 
+  "\t"
+| 
+  "\n"
+| 
+  "\r"
+}
+
+TOKEN [IGNORE_CASE]:
+{
+  	< SEEKING : "seeking" >
+|
+ 	< OR : "or" >
+|
+	< A : "a">
+|
+	< POSITION : "position">
+| 
+  	< IN   : "in" >
+|
+  	< AROUND : "around">
+|
+  	< PREFERABLY : "preferably" >
+|
+	< WITH : "with" >
+|
+	< SALARY : "salary" >
+|
+	< OF : "of" >
+| 
+  	< TITLE : "Software engineer"
+| 	"Applications Engineer"
+| 	"Chief Technology Officer"
+| 	"Chief Information Officer"
+| 	"Computer and Information Systems Manager"
+| 	"Database Administrator"
+| 	"Help Desk Technician"
+| 	"Information Technology Director"
+| 	"Information Technology Manager"
+| 	"Management Information Systems Director"
+| 	"Network Architect"
+| 	"Network Engineer"
+| 	"Network System Administrator"
+| 	"Programmer"
+| 	"Programmer Analyst"
+| 	"Security Specialist"
+| 	"Senior Applications Engineer"
+| 	"Senior Database Administrator"
+| 	"Senior Network Architect"
+| 	"Senior Network Engineer"
+| 	"Senior Network System Administrator"
+| 	"Senior Programmer"
+| 	"Senior Programmer Analyst"
+| 	"Senior Security Specialist"
+| 	"Senior Software Engineer"
+| 	"Senior Support Specialist"
+| 	"Senior System Administrator"
+| 	"Senior System Analyst"
+| 	"Senior System Architect"
+| 	"Senior System Designer"
+| 	"Senior Systems Analyst"
+| 	"Senior Systems Software Engineer"
+| 	"Senior Web Administrator"
+| 	"Senior Web Developer"
+| 	"Software Engineer"
+| 	"Software Quality Assurance Analyst"
+| 	"Support Specialist"
+| 	"System Administrator"
+| 	"System Analyst"
+| 	"System Architect"
+| 	"System Designer"
+| 	"Systems Analyst"
+| 	"Systems Software Engineer"
+| 	"Technical Specialist"
+| 	"Telecommunications Specialist"
+| 	"Web Administrator"
+| 	"Web Developer"
+| 	"Webmaster"
+  	>
+|
+	< COMPANYTYPE : "Information Technology"
+| 	"Network"
+| 	"Bioinformatics"
+| 	"Medical"
+| 	"Business"
+| 	"Accounting"
+| 	"Transportation"
+| 	"Banking"
+| 	"Art"
+| 	"Agriculture"		
+	>
+| 
+	< AREANAME: "New York"
+|  				"San Francisco"
+| 				"Los Angeles"
+| 				"Chicago"
+|  				"San Jose"
+| 				"Boston"
+| 				"Mountain View"
+| 				"Sunnyvale"
+| 				"San Diego"
+| 				"Palo Alto"
+| 				"Menlo Park"
+	>
+|
+	< UNIT: "month"
+|
+			"hour"
+|
+			"year"
+	>
+}
+
+TOKEN :
+{
+  	< COMPANYNAME : ( ["a"-"z","A"-"Z","_","-","0"-"9"] )+ >
+|
+	< NUMBER : ( ["0"-"9"] )+ >
+|
+	< SALARYAMOUNT : "$"<NUMBER>"/"<UNIT>> 
+}
+
+
+/** Main production. */
+ASTStart Start() : {}
+{
+	Seek()
+	{ return jjtThis; }
+}
+
+/** Query */
+void Seek() #seek: {}{
+	<SEEKING> Job()
+}
+
+/** Job() */
+void Job() #void : {}
+{
+	LOOKAHEAD(JobPrime() JobTemp())
+  	(JobPrime() (JobTemp())+)      #JobOr
+|
+	JobPrime()
+}
+
+void JobTemp() #void : {}
+{
+  LOOKAHEAD({ (getToken(1).kind == OR) })
+  <OR> Job()
+}
+
+
+/** JobPrime() */
+void JobPrime() #Job : {}
+{
+	LOOKAHEAD(Title() CAS())
+  	Title() CAS()
+|
+	Title()
+} 
+
+/** CAS() */
+void CAS() #void : {}
+{
+	LOOKAHEAD(Area())
+	AS()
+| 
+	LOOKAHEAD(Company() AS())
+  	Company() AS()
+|
+	LOOKAHEAD(Company())
+  	Company()
+| 
+	Salary()
+} 
+
+/** AS() */
+void AS() #void : {}
+{
+  	LOOKAHEAD(Area() Salary())
+  	Area() Salary()
+|
+	Area()
+| 
+	Salary()
+} 
+
+
+/** Title() */
+void Title() #title : {Token t;}{
+  	<A> t = <TITLE>{ jjtThis.title = t.image; } <POSITION>}
+
+/** Company() */
+void Company() #company : {}
+{
+	LOOKAHEAD(3)
+	(<PREFERABLY>) #preferableCompany <IN> CompanyType()
+|
+	LOOKAHEAD(3)
+  	(<PREFERABLY>) #preferableCompany <IN> CompanyName()
+|
+	LOOKAHEAD(2)
+	<IN> CompanyType()
+|
+	LOOKAHEAD(2)
+	<IN> CompanyName()
+}
+
+/** CompanyName() */
+void CompanyName() #void : {}
+{
+ 	LOOKAHEAD(CompanyNamePrime() CompanyNameTemp())
+  	(CompanyNamePrime() (LOOKAHEAD(CompanyNameTemp()) CompanyNameTemp())+)       #CompanyNameOr
+|
+	CompanyNamePrime()
+}
+
+/** CompanyNameTemp() */
+void CompanyNameTemp() #void : {}
+{
+ 	<OR> CompanyName()
+}
+
+
+/** CompanyNamePrime() */
+void CompanyNamePrime() #CompanyName : {Token t;}
+{
+	t = <COMPANYNAME>{ jjtThis.companyName = t.image; }
+} 
+
+/** CompanyType() */
+void CompanyType() #void : {}
+{
+ 	LOOKAHEAD(CompanyTypePrime() CompanyTypeTemp())
+  	(CompanyTypePrime() (LOOKAHEAD(CompanyTypeTemp()) CompanyTypeTemp())+)       #CompanyTypeOr
+|
+	CompanyTypePrime()
+}
+
+/** CompanyTypeTemp() */
+void CompanyTypeTemp() #void : {}
+{
+ 	<OR> CompanyType()
+}
+
+
+/** CompanyTypePrime() */
+void CompanyTypePrime() #CompnayType : {Token t;}
+{
+	t = <COMPANYTYPE> { jjtThis.companyType = t.image; }
+}   
+
+
+/** Area() */
+void Area() #area : {}
+{	LOOKAHEAD(2)
+  	(<PREFERABLY>) #preferableArea inArea()
+|
+	LOOKAHEAD(2)
+  	(<PREFERABLY>) #preferableArea aroundArea()
+|
+	inArea()
+|
+	aroundArea()
+}
+
+/** inArea() */
+void inArea() #inArea : {}
+{
+	<IN> AreaName()
+}
+
+/** aroundArea() */
+void aroundArea() #aroundArea : {}
+{
+	<AROUND> AreaName()
+}
+
+/** AreaName() */
+void AreaName() #void : {}
+{
+  	LOOKAHEAD(AreaNamePrime() AreaNameTemp())
+  	(AreaNamePrime() (LOOKAHEAD(AreaNameTemp()) AreaNameTemp())+)       #AreaNameOr
+|
+	AreaNamePrime()
+}
+
+/** AreaNameTemp() */
+void AreaNameTemp() #void : {}
+{
+ 	<OR> AreaName()
+}
+
+
+/** AreaNamePrime() */
+void AreaNamePrime() #AreaName : {Token t;}
+{
+	t = <AREANAME> { jjtThis.areaName = t.image; }
+} 
+
+/** Salary() */
+void Salary() #void : { Token t; }
+{
+	<WITH> <A> <SALARY> <OF> (t = <SALARYAMOUNT> { jjtThis.salary = t.image; }) #salary
+} 
