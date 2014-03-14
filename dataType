@@ -1,0 +1,78 @@
+drop dataverse seachAgent if exists;
+
+create dataverse seachAgent;
+use dataverse searchAgent;
+
+drop dataset Jobs if exists;
+drop dataset Resumes if exists;
+
+drop type Job if exists;
+drop type Resume if exists;
+drop type requirementType if exists;
+drop type jobExperienceType if exists;
+drop type locationType if exists;
+drop type experienceType if exists;
+drop type educationType if exists;
+
+create type educationType as open{
+    univ_name: string,
+    degree: string,
+    major: string,
+    GPA: float?,
+    start_date: date,
+    end_date: date?
+}
+
+create type experienceType as open{
+    organization_name: string,
+    title: string,
+    start_date: date,
+    end_date: date?,
+    description: string?
+}
+
+create type locationType as open{
+    state: string,
+    city: string
+}
+
+create type jobExperienceType as open{
+	year: string,
+	area: string
+}
+
+create type requirementType as open{
+	minimum_degree: string?,
+	experience: [jobExperienceType]?,
+	discipline: [string]?
+}
+
+create type Resume as open{
+    id: int16,
+    name: string,
+    location:[locationType],
+    summary: string?,
+    education: [educationType],
+    experience: [experienceType]?,
+    skills: [string]?
+}
+
+create type Job as open{
+	id: int16,
+	company_name: string,
+	title: string,
+	requirement: requirementType,
+	location: string
+}
+
+create dataset Jobs(Job)
+primary key id;
+
+create dataset Resumes(Resume)
+primary key id;
+
+load dataset Jobs using localfs
+    (("path"="localhost:///Users/xixi/Desktop/Project/asterix-installer-0.8.0-binary-assembly/jobData.adm"),("format"="adm"));
+
+load dataset Resumes using localfs
+    (("path"="localhost:///Users/xixi/Desktop/Project/asterix-installer-0.8.0-binary-assembly/resumeData.adm"),("format"="adm"));

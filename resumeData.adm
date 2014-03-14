@@ -1,0 +1,161 @@
+{
+"id": int16("200"),
+"name":"Aoran Xu",
+"location":[{"state":"CA", "city":"San Diego"}],
+"summary":"I am currently pursuing M.S. in Chemical Engineering at UC San Diego, looking for potential internships and full-time positions. 3+ years of research experienced in chemical synthesis and characterizations of nanomaterials, applied to process integration and device fabrication. Research background in semiconductor and LED industry, electromagnetic and electrochemical energy stroage and conversion. Excellent problem-solving, commnication and team working skills.",
+"education":[{"univ_name":"University of California,San Diego", "degree":"Master", "major":"Chemical Engineering", "GPA":float("3.93"), "start_date": date("2012-09-01")}, {"univ_name":"Tsinghua University", "degree":"Bachelor of Engineering", "major":"Chemical Engineering", "start_date": date("2008-08-28"), "end_date":date("2012-07-04")}],
+"experience":[{"organization_name":"Philips", "title":"Process Engineering Intern", "start_date":date("2013-06-15"),"end_date":date("2013-09-01")}],
+"skills":["Nanomaterials","Nanoparticles","MATLAB"]
+}
+
+{
+"id": int16("201"),
+"name":"Chunyan Wang",
+"location":[{"state":"CA", "city":"San Diego"}],
+"summary":"I'm second year master student in Computer Science in UCSD. I am interested in database and information retrieval.",
+"education":[{"univ_name":"University of California,San Diego", "degree":"Master", "major":"Computer Science", "GPA":float("3.96"), "start_date": date("2012-09-01")}, {"univ_name":"Xi'an Jiaotong University", "degree":"Bachelor of Science", "major":"Computer Science", "start_date": date("2008-08-28"), "end_date":date("2012-07-04")}],
+"experience":[{"organization_name":"University of California,San Diego", "title":"Teaching Assistant", "start_date":date("2013-09-23"), "description":""}, {"organization_name":"Google", "title":"Software Engineer Intern in Test", "start_date":date("2013-06-15"),"end_date":date("2013-09-04"), "description":"Worked on Google TV testing infrastructure"}],
+"skills":["Java","Python","MATLAB"],
+"projects" : {"name": "Real-time Collaborative Editing System", "description" : "We developed a real-time collaborative editing system, which works like Google Doc. This was our course project for Distributed Computing and System. Our system was launched on two Amazon EC2, and can support several users editing the same file. My main job was to set up the Thrift framework as well as the design and implementation of the front-end.", "teammate": "Yan Jiao"}
+}
+
+{
+"id":int16("202"),
+"name":"Zhiheng Li",
+"location":[{"state":"CA", "city":"San Diego"}],
+"education":[{"univ_name":"University of California,San Diego", "degree":"Master", "major":"Computer Science", "start_date": date("2012-09-01")}, {"univ_name":"Shanghai Jiaotong University", "degree":"Bachelor of Science", "major":"Electrical and Computer Engineering", "start_date": date("2008-08-28"), "end_date":date("2012-07-04")}],
+"experience":[{"organization_name":"Amazon", "title":"Software Development Engineer Intern", "start_date":date("2013-09-23"), "description":""}, {"organization_name":"Owtware (Shanghai) Technology Co, Ltd.", "title":"Software Engineer Intern", "start_date":date("2012-01-01"),"end_date":date("2012-05-31"), "description":"Implemented remote file copy feature to support disk backup and file sharing over servers. Improved the internationalization schema of the website, which allows people to scan new terms and update old terms for different languages rapidly. Created shell scripts which automated the deployment process and achieved one-click installation on new servers."}],
+"skills":["C/C++","Java","Python","MATLAB","JavaScript"]}
+
+{
+"id":int16("203"),
+"name":"Take Kurosawa",
+"location":[{"state":"CA", "city":"Mountain View"}],
+"summary":"I am a passionate, energetic and goal-driven individual who is constantly striving for improvement. LinkedIn's company vision is to \“create economic opportunities for every professional in the world.\” In my role, I'm lucky enough to have the opportunity of working towards this vision by seeking out top talent to come join our world-class team. When I’m not working, you can find me spending my time bouldering at Planet Granite, eating at newly yelped restaurants, or exploring the Bay Area's best hikes.",
+"education":[{"univ_name":"University of California,San Diego", "degree":"Bachelor", "major":"Management Science", "start_date": date("2008-09-01"), "end_date":date("2012-06-30")}],
+"experience":[{"organization_name":"LinkedIn", "title":"Campus Recruiter", "start_date":date("2012-07-01"), "description":"Full-cycle recruiting for Software Engineering Interns and New College Graduates. Roles currently include: Site Reliability Engineers, NOC Engineers, UNIX System Admins, Grid Systems Engineers & DBAs"}, {"organization_name":"Jack in the Box", "title":"Human Resources/Recruiting Intern", "start_date":date("2012-02-01"),"end_date":date("2012-05-31"), "description":"Conducted Internet-based research on strategies of how to leverage social media for the recruiting purposes. Familiarized with Jack in the Box HR policies, recruiting and hiring processes. Researched a new Employee Referral Program to enhance recruitment of top talent. Organized and facilitated monthly Intern Roundtable discussions to improve current and future internships"}],
+"skills":["Technical recruiting","College Recruiting","Social Media"]}
+
+{
+"id":int16("204"),
+"name":"Wenxiong Li",
+"location":[{"state":"CA", "city":"San Diego"}],
+"summary":"Highly motivated graduate student pursuing an internship or full time position in Mechanical and Aerospace Engineering fields, where I can contribute to an organization while expanding my knowledge and experience.",
+"education":[{"univ_name":"University of California,San Diego", "degree":"Master", "major":"Mechanical Engineering/Fluid Mechanics", "start_date": date("2012-09-01"), "GPA":float("3.6")}],
+"experience":[{"organization_name":"Palate Home Inc.", "title":"Assistant Designer", "start_date":date("2013-06-13"), "end_date":date("2013-08-23"),"description":"Design the shape and the size of the heating element, 3D CAD modeled it with SolidWorks in 2 days.CNC Machined the aluminum prototype with a machinist, developed a double configuration of heating bar which enabled the 13in*10in plate to generate heat uniformly during the ulterior heating test."}, {"organization_name":"Guangdong Xiangji Electrical Appliance Co., Ltd", "title":"Assistant Engineer", "start_date":date("2012-02-01"),"end_date":date("2012-08-31"), "description":"1.Designed the condenser of a new Condensing Digital Constant Temperature water heater, increased the thermal efficiency from 101% to 103%(with latent heat) within one month, 12% higher than the traditional.2.Tested 30+ burners daily and redesigned the fire hole, reduced 16% of flashback, flameout or yellow flame, with Pro/Engineer. Optimized the thermal efficiency and reduced the emission."}],
+"skills":["Solidworks","Unigraphics","OriginLab"]}
+
+{
+"id":int16("205"),
+"name":"Guanyu He",
+"location":[{"state":"PA", "city":"Philadelphia"}],
+"summary":"I'm currently an enrolled student in Computer Graphics and Game Technology program in University of Pennsylvania, expecting to graduate in Dec.2013. I'm passionate in all the industries related to computer science and computer engineering, especially in electronic game industry and Animation industry. My objective is to seek a job in such industries and start my career at the end of the year.",
+"education":[{"univ_name":"University of Pennsylvania", "degree":"Master", "major":"Computer Graphics", "start_date": date("2012-09-01"), "GPA":float("3.78")},{"univ_name":"Tsinghua University", "degree":"Bachelor of Engineering", "major":"Computer Software", "start_date": date("2008-08-28"), "end_date":date("2012-07-04")}],
+"experience":[{"organization_name":"Tsinghua University", "title":"Research Assistant", "start_date":date("2011-07-01"), "end_date":date("2011-08-15")}],
+"skills":["Python","Java","JQuery","CSS","HTML","PHP","C#"]}
+
+{
+"id":int16("206"),
+"name":"Tonghui Li",
+"location":[{"state":"Other", "city":"Beijing"}],
+"summary":"Software engineer with a learning mind. Keen to the web, mobile and cloud technologies. Love challenges.",
+"education":[{"univ_name":"Tsinghua University", "degree":"Bachelor", "major":"Computer Software", "start_date": date("2008-08-28"), "end_date":date("2012-07-04")}],
+"experience":[{"organization_name":"DeNA", "title":"Software Engineer", "start_date":date("2012-10-01"),"description":"Contribute to the development of Mobage, the biggest Japanese social gaming platform with over 50 million users.Focus on the server side development of the platform and the payment system provided to all games on Mobage.Use a technology stack of Linux, Apache, Perl, Javascript, HTML, MySQL, Memcached, Hadoop, etc."}, {"organization_name":"Microsoft", "title":"Software Engineering Intern", "start_date":date("2011-08-01"),"end_date":date("2012-03-15"),"description":"Do researches on C++ fuzzy parsing and implement a lightweight and robust C++ parser using C#, which provides self-designed syntax tree for source code analysis. The result of the research has been integrated into the Code Clone Detection feature of Visual Studio 2012. Carry out researches on high performance matrix calculation among Microsoft HPC Servers. Contribute to the implementation and optimization of parallel large matrix SVD algorithm using C++ and MPI."}],
+"skills":["Perl","Java","MySQL","Linux","Machine Learning","C#"]}
+
+{
+"id":int16("207"),
+"name":"Xueying Kong",
+"location":[{"state":"other", "city":"Lanarkshire"}],
+"education":[{"univ_name":"Tsinghua University", "degree":"Bachelor", "major":"Theory of Art and Design", "start_date": date("2008-08-28"), "end_date":date("2012-07-04")}],
+"experience":[{"organization_name":"University of Glasgow", "title":"Student", "start_date":date("2012-09-01")}],
+"skills":[""]}
+
+{
+"id":int16("208"),
+"name":"Ashna Jain",
+"location":[{"state":"CA", "city":"San Diego"}],
+"summary":"",
+"education":[{"univ_name":"University of California,San Diego", "degree":"Master", "major":"Computer Science","start_date": date("2013-09-01")},{"univ_name":"Vellore Institute of Technology", "degree":"Bachelor of Technology", "major":"Computer Science and Engineering", "start_date": date("2009-09-01"), "end_date":date("2013-07-01")}],
+"experience":[{"organization_name":"L&T Infotech", "title":"Intern", "start_date":date("2012-06-01"),"end_date":date("2012-07-31")}],
+"skills":["Computer Science","Photoshop"]}
+
+{
+"id":int16("209"),
+"name":"Yang Liu",
+"location":[{"state":"CA", "city":"Mountain View"}],
+"summary":"Interested in human-computer interaction and front-end game, mobile, web development.",
+"education":[{"univ_name":"University of California,San Diego", "degree":"Master", "major":"Computer Science", "GPA":float("3.9"), "start_date": date("2011-09-01"), "end_date":date("2013-06-23")}, {"univ_name":"Tsinghua University", "degree":"Bachelor of Science", "major":"Computer Science", "start_date": date("2007-08-28"), "end_date":date("2011-07-04")}],
+"experience":[{"organization_name":"LinkedIn", "title":"Software Engineer", "start_date":date("2013-08-01"), "description":"Works in Jobs team."}, {"organization_name":"Zynga", "title":"Software Engineer Intern", "start_date":date("2012-06-15"),"end_date":date("2012-09-04"), "description":"Worked on the front-end of Bubble Safari, one of the most famous Facebook games."}, {"organization_name":"LinkedIn", "title":"Software Engineer", "start_date":date("2013-08-01"), "description":"Works in Jobs team."}, {"organization_name":"Microsoft Research Asia", "title":"Software Development Intern", "start_date":date("2010-06-15"),"end_date":date("2010-12-21"), "description":"Designed and implemented a Silverlight interface for a parallel machine learning toolkit running on Windows Azure. Data visualization, background working and real-time logging supported."}],
+"skills":["Java","Python",".NET","User Interface","Android","IOS","PHP"]}
+
+{
+"id":int16("210"),
+"name":"Xinxing Jiang",
+"location":[{"state":"CA", "city":"Palo Alto"}],
+"education":[{"univ_name":"Stanford University", "degree":"Master", "major":"Computer Science", "start_date": date("2013-09-01")}, {"univ_name":"Tsinghua University", "degree":"Bachelor of Science", "major":"Computer Software", "start_date": date("2009-08-28"), "end_date":date("2013-07-04")}],
+"skills":["Java","Python","Hadoop","C#","Latex"]}
+
+{
+"id":int16("211"),
+"name":"Dianxia Yang",
+"location":[{"state":"CA", "city":"Mountain View"}],
+"summary":"I enjoy designing and developing interesting applications. 
+I keep learning new technologies with my passion. 
+I'm looking forward to facing more and more challenges.",
+"education":[{"univ_name":"Carnegie Mellon University", "degree":"Master", "major":"Computer Science", "start_date": date("2012-08-20"), "end_date": date("2013-12-17")}, {"univ_name":"Xiamen University", "degree":"Bachelor of Science", "major":"Computer Science", "start_date": date("2008-08-28"), "end_date":date("2012-07-15")}],
+"skills":["C++","JQuery","R","Android","OpenGL"]}
+
+{
+"id":int16("212"),
+"name":"Jing Liu",
+"location":[{"state":"CA", "city":"Palo Alto"}],
+"summary":"The primary research focus of mine includes Computational Display / Photography technologies. I'm generally interested in research problems like image/video processing, 3D reconstruction, etc.",
+"education":[{"univ_name":"University of Clifornia, Santa Cruze", "degree":"Phd", "major":"Computer software", "start_date": date("2012-09-01"), "end_date": date("2017-07-01")}, {"univ_name":"Stanford University", "degree":"master", "major":"Computer Software", "start_date": date("2012-10-01"), "end_date":date("2013-06-01")}],
+"experience":[{"organization_name":"ICT Graphics Lab", "title":"Visiting Student Researcher", "start_date":date("2012-06-01"), "description":"Built a glasses-free 3D imagery system with extremely high angular resolution. The prototype is implemented using an array of 36 pico projectors, and can be scaled up to 72 projectors (driven by one single machine). This pico-projector array system is very promising in providing viewers very pleasant 3D viewing experience"}, {"organization_name":"Google", "title":"Research Intern", "start_date":date("2011-06-14"),"end_date":date("2011-09-01"), "description":"Optimize the performance of bilateral filter in image processing on both PC and tablet platforms."}],
+"skills":["C++","Image Processing","Algorithms","Computer Vision","Computer Science","LaTeX","OpenGL","Artificial Intelligence","Computer Graphics","Matlab"]}
+
+{
+"id":int16("213"),
+"name":"Fangbo Tao",
+"location":[{"state":"CA", "city":"Palo Alto"}],
+"summary":"Big data mining and machine learning Ph.D. student, University of Illinois at Urbana-Champaign. Recently I work on some projects to improve the experience of how people search, analyze and interact with government data, news data and social data.",
+"education":[{"univ_name":"University of Illinois at Urbana-Champaign", "degree":"Phd", "major":"Computer software", "start_date": date("2012-08-15")}, {"univ_name":"TsingHua University", "degree":"Bachelor", "major":"Computer Software", "start_date": date("2008-09-01"), "end_date":date("2012-06-01")}],
+"experience":[{"organization_name":"Microsoft", "title":"Researcher", "start_date":date("2013-05-01"), "description":"Worked in the web understanding group with Yan Ke and Hao Ma.Developed the relationship explaining feature for what you see from Bing's Entity Panel "}, {"organization_name":"KantWait LLC", "title":"Co-founder", "start_date":date("2013-05-01"),"description":"KantWait is an online one-stop shop for local stores and a public transportation system for merchandise."}],
+"skills":["C","Algorithms","Data Mining","Python","LaTeX","C#","SQL","Machine Learning"]}
+
+{
+"id":int16("214"),
+"name":"Bingsheng(Clarence) Wang",
+"location":[{"state":"CA", "city":"Palo Alto"}],
+"education":[{"univ_name":"Virginia Tech", "degree":"Phd", "major":"Computer software", "start_date": date("2011-09-01")}, {"univ_name":"Beihang University", "degree":"Bachelor", "major":"Computer Software", "start_date": date("2007-09-01"), "end_date":date("2011-06-01")}],
+"experience":[{"organization_name":"IBM", "title":"Research Intern", "start_date":date("2010-02-01"), "end_date":date("2010-06-01")}],
+"skills":["C++","Algorithms","Apache Mahout","MapReduce","Apache Lucene","R","Java","Machine Learning"]}
+
+{
+"id":int16("215"),
+"name":"Yi Lin",
+"location":[{"state":"CA", "city":"San Francisco"}],
+"summary":"I am interested in the data mining and software design",
+"education":[{"univ_name":"Columbia University", "degree":"Master", "major":"Computer Science", "start_date": date("2010-09-01"),"end_date": date("2011-07-01")}, {"univ_name":"TsingHua University", "degree":"Bachelor", "major":"Computer Software", "start_date": date("2006-09-01"), "end_date":date("2010-07-01")}],
+"experience":[{"organization_name":"Amazon", "title":"Software Development Engineer", "start_date":date("2012-03-01"),"end_date": date("2013-07-01"),"description":"Amazon Digital Platforms"}, {"organization_name":"Facebook", "title":"Software Engineer", "start_date":date("2013-07-01"),"description":"Facebook platform design"}],
+"skills":["scalable Web","Mobile Product","System Architecture","Python","Apache Mahout","C#","SQL","Apache Lucene"]}
+
+{
+"id":int16("216"),
+"name":"Wangfan Fu",
+"location":[{"state":"CA", "city":"San Diego"}],
+"summary":"I believe computer technology can improve the quality of human's life",
+"education":[{"univ_name":"University of California,San Diego", "degree":"Master", "major":"Computer Science","GPA":float("4.0"), "start_date": date("2012-09-01"),"end_date": date("2014-06-01")}, {"univ_name":"TsingHua University", "degree":"Bachelor", "major":"Automation", "start_date": date("2008-09-01"), "end_date":date("2012-07-01")}],
+"experience":[{"organization_name":"Microsoft", "title":"SDET Intern", "start_date":date("2011-08-01"),"end_date": date("2011-11-01"),"description":"Developed internal tool to retrieve and visualize Bing news classifier log.Improved performance of large-scale search log database with millions of records."}, {"organization_name":"University of California,San Diego", "title":"Research Assistant", "start_date":date("2013-01-01"),"end_date":date("2013-06-01"),"description":"Implemented efficient randomized contraction index for large-scale graph database query.Implemented Hadoop-based scale-free network generation algorithm."}],
+"skills":["Artificial Intelligence","Haskell","Algorithms","Python","C","C++","Matlab","Java"]}
+
+{
+"id":int16("217"),
+"name":"Youyi Fu",
+"location":[{"state":"CA", "city":"San Diego"}],
+"summary":"A man you can trust forever",
+"education":[{"univ_name":"University of California,San Diego", "degree":"phd", "major":"Computer Science","GPA":float("4.0"), "start_date": date("2011-09-01")},{"univ_name":"Beihang University", "degree":"Bachelor", "major":"Mechanical Engineering", "start_date": date("2006-09-01"), "end_date":date("2010-07-01")}],
+"experience":[{"organization_name":"Western Digital", "title":"Mechanical Engineering Intern", "start_date":date("2012-06-01"),"end_date": date("2012-09-01"),"description":"Perform finite element modeling and analyses using ANSYS and ANSYS Workbench."}, {"organization_name":"University of California,San Diego", "title":"Teaching Assistant", "start_date":date("2012-09-01"),"end_date":date("2012-12-16"),"description":"Teach Computer Aided Design class"}],
+"skills":["C","Solidworks","Hypermesh","AFM","NanoIndentation","SEM","Matlab","Ls-Dyna"]}
+

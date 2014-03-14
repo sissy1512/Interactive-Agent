@@ -1,0 +1,261 @@
+{
+ "id":int16("100"),
+ "company_name":"Google",
+ "title":"Software Engineer",
+ "requirement":{"minimum_degree":"Master", "experience":[{"year":"3", "area":"machine learning"}], "discipline":["CS"]},
+ "location": "mountain view",
+ "compensation": "$50/hour"
+}
+
+{
+ "id":int16("101"),
+ "company_name":"LinkedIn","title":"Software Engineer",
+ "requirement":{"minimum_degree":"Master", "experience":[{"year":"3", "area":"machine learning"}], "discipline":["CS"]},
+ "location": "mountain view",
+ "compensation": "$66/hour",
+ "career level": "entry level"
+}
+
+{
+"id":int16("102"),
+"company_name":"Facebook","title":"Software Engineer",
+"requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"1", "area":"machine learning"}],"discipline":["CS"]},
+ "location": "Palo Alto",
+  "compensation": "$60/hour",
+  "career level": "entry level"
+}
+
+{
+ "id":int16("103"),
+ "company_name":"Turn","title":"Software Engineer, Server Development",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"8", "area":"network programming"}], "discipline":["CS","EE"]},
+ "location": "San Francisco",
+  "compensation": "$63/hour"
+}
+
+{
+ "id":int16("104"),
+ "company_name":"Twitter","title":"Software Engineer - Web Applications",
+ "requirement":{"minimum_degree":"Master", "experience":[{"year":"3", "area":"Python"}], "discipline":["CS"]},
+ "location": "San Francisco",
+  "compensation": "$50/hour"
+}
+
+{
+ "id":int16("105"),
+ "company_name":"Hulu","title":"Software Developer",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"1", "area":"machine learning"}], "discipline":["CS"]},
+ "location": "Los Angeles",
+  "compensation": "$45/hour"
+}
+
+{
+ "id":int16("106"),
+ "company_name":"Yahoo!Inc","title":"Machine Learning Engineer",
+ "requirement":{"minimum_degree":"Master", "experience":[{"year":"3", "area":"database"}], "discipline":["CS"]},
+ "location": "Sunnyvale",
+  "compensation": "$48/hour"
+}
+
+{
+ "id":int16("107"),
+ "company_name":"Microsoft","title":"Program Manager",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"2", "area":"distributed system"}],  "discipline":["CS"]},
+ "location": "Seattle",
+  "compensation": "$100000/year"
+}
+
+{
+ "id":int16("108"),
+ "company_name":"Amazon","title":"Senior Software Engineer",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"2", "area":"distributed system"}],  "discipline":["CS"]},
+ "location": "Seattle",
+  "compensation": "$40/hour"
+}
+
+{
+ "id":int16("109"),
+ "company_name":"Qualcomm Life, Inc. - Life","title":"Web Software Engineer",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"5", "area":"C/C++"}],"discipline":["CS","EE"]},
+ "location": "San Diego",
+  "compensation": "$45/hour"
+}
+
+{
+ "id":int16("110"),
+ "company_name":"Scientific Research Corp","title":"Application Developer",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"1", "area":"Machine Learning"}],"discipline":["CS","EE"]},
+ "location": "Seattle"
+}
+
+{
+ "id":int16("111"),
+ "company_name":"Hansell","title":"Software Developer",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"1", "area":"Python"}],"discipline":["CS"]},
+ "location": "San Diego"
+}
+
+{
+ "id":int16("112"),
+ "company_name":"Footprints MD","title":"Mobile Application Developer",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"3", "area":"iOS"}, {"year":"1", "area":"JSON"}],"discipline":["CS"]},
+ "location": "Greater San Diego Area",
+ "compensation": "$25/hour"
+}
+
+{
+ "id":int16("113"),
+ "company_name":"Aldera","title":"Java Software Engineer",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"5", "area":"SQL"}],"discipline":["CS"]},
+ "location": "Greater San Diego Area"
+}
+
+{
+ "id":int16("114"),
+ "company_name":"Yelp","title":"Web Developer",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"0", "area":"Web Application"}],"discipline":["CS","EE"]},
+ "location": "San Francisco",
+ "compensation": "$30/hour"
+}
+
+{
+ "id":int16("115"),
+ "company_name":"Juniper","title":"Software Engineer",
+ "requirement":{"minimum_degree":"Master", "experience":[{"year":"3", "area":"software development"}],"discipline":["CS","EE"]},
+ "location": "San Francisco",
+ "compensation": "$60/hour"
+}
+
+{
+ "id":int16("116"),
+ "company_name":"illumina","title":"Software Engineer",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"3", "area":"C#"}],"discipline":["CS","EE"]},
+ "location": "San Diego"
+}
+
+{
+ "id":int16("117"),
+ "company_name":"CyberCoders","title":"Software Developer",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"3", "area":"software development"}],"discipline":["CS"]},
+ "location": "San Diego"
+}
+
+{
+ "id":int16("118"),
+ "company_name":"Qualcomm","title":"Senior Systems Engineer",
+ "requirement":{"minimum_degree":"Phd", "experience":[{"year":"10", "area":"Machine Learning"}],"discipline":["CS"]},
+ "location": "Seattle",
+ "compensation": "$45/hour"
+}
+
+{
+ "id":int16("119"),
+ "company_name":"Google","title":"Software Engineer",
+ "requirement":{"minimum_degree":"Master", "experience":[{"year":"3", "area":"Robotic research"}],"discipline":["CS"]},
+ "location": "Mountain View",
+ "compensation": "$50/hour",
+ "career level": "entry level"
+}
+
+{
+ "id":int16("120"),
+ "company_name":"Endicia","title":"Principal Software Engineer",
+ "requirement":{"minimum_degree":"Master", "experience":[{"year":"10", "area":"java"}, {"year":"10", "area": "MS SQL Server or comparable database"}, {"year":"10", "area":"Web Services (WSDL, SOAP) and REST"}],"discipline":["CS"]},
+ "location": "Palo Alto",
+ "compensation": "$35/hour",
+ "description": "Primary responsibility is implementing enterprise-level system architecture, designs, and working with one or more development teams to realize future product architecture. While this is an Individual Contributor position, there is expectation that the Principal Software Engineer play a technical leadership and mentoring role in the organization."
+}
+
+{
+ "id":int16("121"),
+ "company_name":"Turn","title":"Software Engineer in Test",
+ "requirement":{"minimum_degree":"BS", "experience":[{"year":"3", "area":"software development"}, {"year":"3", "area": "QA testing"}, {"year":"1", "area":"JAVA"}],"discipline":["CS"]},
+ "location": "Redwood City",
+ "compensation": "$50/hour",
+ "description": "We are looking for an analytic, yet very technical software engineer to help design and create automated testing suite that would ensure 1 million business decisions per second are made to the precise business logic as promised to our clients. We not only test the delivered product, but also facilitate and inspire the developers to test their codes better. We manage production like test environments and engineer to automate and optimize use of them."
+}
+
+{
+ "id":int16("122"),
+ "company_name":"Telenav","title":"Software Engineer",
+ "requirement":{"minimum_degree":"BS", "experience":[{"year":"1", "area":"Objective-C"}, {"year":"2", "area": "software development"}, {"year":"1", "area":"IOS"}],"discipline":["CS"],"preferred": ["C++", "HTML5"]},
+ "location": "Sunnyvale",
+ "description": "We are looking for a passionate, highly motivated, responsible and deeply committed Software Engineer to join the team. You will be using your best UI instincts on a daily basis. The ideal candidate is an iOS developer with a successfully released app to the AppStore under their belt. You are right at home with Objective C, Cocoa Touch, and designing great user experiences for iOS platforms. You're itching to join a fast-paced mobile development project with a top-notch engineering team to create amazing mobile experiences."
+}
+
+{
+ "id":int16("123"),
+ "company_name":"Kforce","title":"Staff Software Engineer",
+ "requirement":{"experience":[{"year":"5", "area":"JavaScript"}, {"year":"1", "area": "MVC"}],"discipline":["CS"]},
+ "location": "Mountain View",
+ "description": "Our client's central technology division located in Mountainview, California (CA) is looking for a staff software engineer to lead the development of UI widgets for its centralized services. The ideal candidate is an energetic, self-driven engineering contributor with extensive experience in UI development for web applications and tools.",
+ "career level": "experienced"
+}
+
+
+{
+ "id":int16("124"),
+ "company_name":"Flexton","title":"UI Software Engineer",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"7", "area":"JavaScript"}, {"year":"7", "area": "AJAX"}, {"year": "5", "area": "web application"}],"discipline":["CS"]},
+ "location": "San Francisco",
+ "description": "The Senior UI Developer designs, implements and supports the web development for website functionality and will work closely with Leads, Architects, other Software Engineers, Business Analysts, and Quality Engineers in a highly collaborative environment. The website team is dynamic, fast paced, and highly collaborative. Ideal candidate must be able to thrive in an environment where change is constant. The website development team uses an Agile methodology where all roles closely collaborate with one another in order to complete each unit of work – the story. In other words, development is not complete until all unit testing, code reviews, QA verification, and user acceptance have passed for each story. This means communication skills and interpersonal skills are a must for this position.  The website team is self-organizing. This means developers need to take initiative to pick up stories and reach out to other team members when they need assistance in order to ensure the story is completed. Likewise, developers need to be available and willing to assist other engineers and team mates when they need assistance. Verbal and written communication skills are key here.",
+ "type": "Full time",
+ "career level": "experienced"
+}
+
+{
+ "id":int16("125"),
+ "company_name":"Qualys","title":"Software Engineer",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"4", "area":"JavaScript"}, {"year":"4", "area": "AJAX"}, {"year":"1", "area": "SVN"}],"discipline":["CS","EE"], "preferred": "Ext-JS"},
+ "location": "Mountain View",
+ "description": "As a Senior Software Engineer you will be part of a motivated and agile engineering team that is responsible for the development of complex web applications supporting the QualysGuard on demand security service platform.This opening is your chance to work in the rapidly expanding field of computer security, in a company with excellent customer ratings and outstanding growth rates.",
+ "responsibilities":["Research, design, develop, test, and debug new features and improvements to the rapidly expanding QualysGuard platform using PHP, JAVA, Oracle, and Ext-JS", "Provide guidance on projects and mentor other engineers", "Communicate effectively with other software engineers", "Incorporate best of breed technologies that deliver high quality end user experience."],
+ "career level": "entry level"
+}
+
+{
+ "id":int16("126"),
+ "company_name":"Apple","title":"Software Engineer",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"1", "area":"Linux"}, {"year":"10", "area":"scalable applications"}],"discipline":["CS","Mathematics","EE"], "preferred": ["NoSQL","Hadoop", "HBase", "Netty", "NIO"]},
+ "location": "Cupertino",
+ "description": "iCloud Engineering is looking for a Software Engineer to develop world-class applications. This is a hands-on role in the development of software systems to support existing and new product features. This role requires working closely with cross-functional teams to effectively coordinate the complex interdependencies inherent in this role. Occasional pager rotation to support production issues would be a part of this role.",
+ "type": "Full time",
+ "career level": "experienced"
+}
+
+{
+ "id":int16("127"),
+ "company_name":"Amazon","title":"Senior Software Engineer",
+ "requirement":{"minimum_degree":"Master", "experience":[{"year":"7", "area":"software development"}, {"year":"5", "area":"JAVA"}, {"year":"5", "area":"C++"}, {"year":"5", "area":"LINUX"}, {"year":"5", "area":"OpenGL"},{"year":"5", "area":"Hibernate"}],"discipline":["CS"]},
+ "location": "Cupertino",
+ "description": "We are looking for a Senior Software Development Engineer to join our team and drive the development of applications that power consumer electronic devices. Your job will be to work with a team of engineers (hardware and software) and other team members (PM, Product, Marketing) to design and develop new ways of providing exciting and compelling experiences. You'll measure your success by the quality of your execution, the pace of innovation you help drive, and the increased satisfaction you deliver. If you’re ready to make a difference at a company that matters, if you want huge challenges to tackle, we would love to talk to you. We are looking for passionate, hard-working, and talented Software Engineers who have experience building innovative, mission critical, high volume applications. You will have an enormous opportunity to make a large impact on the design and architecture of cutting edge products used every day, by people you know.",
+ "career level": "experienced"
+}
+
+{
+ "id":int16("128"),
+ "company_name":"Cisco","title":"Software Engineer",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"3", "area":"JavaScript"}, {"year":"3", "area":"C++"}],"discipline":["CS","EE"]},
+ "location": "San Jose",
+ "description": "This is a best-of-the-best job search. We are looking to hire passionate, motivated, highly energized software engineers as the core foundation of a team with almost limitless opportunity to build the literal next generation campus networking platform. The work involves design and development in a brand-new software-defined networking platform for the control and management of both new and existing Cisco networks. This position is unique as it will involve building intelligent services and collection mechanisms across routing, switching, and wireless networking components in a global-scale, real-world use case. Engineers can look forward to their results getting in front of customers quickly and the product performance directly driving Cisco's core business.",
+ "type": "Full time",
+ "career level": "experienced"
+ }
+
+{
+ "id":int16("129"),
+ "company_name":"IBM","title":"Software Engineer",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"3", "area":"Web Application"}, {"year":"2", "area":"Struts2"}, {"year":"2", "area":"JAVA"}],"discipline":["CS","EE"], "preferred": ["JDBC","JSON"]},
+ "location": "San Jose",
+ "description": "The Medial Sieve grand challenge research project has urgent need for a software engineer with web development and user interface design skills to join our staff to meet critical milestones of the project. The candidate should have a B.S. or M.S in Computer Science and should have extensive experience in architecting large systems, web development, and user interface design. Previous experience of building industrial-strength healthcare applications with ease-of-use is preferred. programming skills in Java, XML, HTML, Javascript, Dojo, JQuery, JSON, Struts2, and JDBC skills are required."
+}
+
+{
+ "id":int16("130"),
+ "company_name":"Nvidia","title":"Senior System Software Engineer",
+ "requirement":{"minimum_degree":"Bachelor", "experience":[{"year":"3", "area":"software development"}, {"year":"2", "area":"parallel programming"}, {"year":"2", "area":"CUDA"}],"discipline":["CS","CE"]},
+ "location": "Santa Clara",
+ "description": "The Medial Sieve grand challenge research project has urgent need for a software engineer with web development and user interface design skills to join our staff to meet critical milestones of the project. The candidate should have a B.S. or M.S in Computer Science and should have extensive experience in architecting large systems, web development, and user interface design. Previous experience of building industrial-strength healthcare applications with ease-of-use is preferred. programming skills in Java, XML, HTML, Javascript, Dojo, JQuery, JSON, Struts2, and JDBC skills are required.",
+ "type": "Full time",
+ "career level": "experienced"
+}
