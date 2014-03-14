@@ -47,7 +47,8 @@ public class dictionary {
 //	public static void main(String[] args){
 //		ArrayList<String> re = new ArrayList<String>();
 //		dictionary diction = new dictionary();
-//		re = diction.decomposeText("software development with java and c++ or python software engineer");
+//		String[] words = "software development with \"java\" and c++, or python software engineer".replace(',', ' ').replace('\"', ' ').split(" ");
+//		re = diction.decomposeText(words);
 //		for(String s: re){
 //			System.out.println(s);
 //		}

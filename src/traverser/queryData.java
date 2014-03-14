@@ -52,7 +52,7 @@ public class queryData {
 		return areaPrefer;
 	}
 	
-	public HashSet<String> query(ArrayList<condition> cons, String datasetName, HttpSolrServer server) throws SolrServerException{
+	public HashSet<String> query(ArrayList<condition> cons, HttpSolrServer server) throws SolrServerException{
 		HashMap<String, ArrayList<String>> combination = new HashMap<String, ArrayList<String>>();
 		
 		SolrQuery query = new SolrQuery();
@@ -133,14 +133,19 @@ public class queryData {
 			
 			if(con.getValue().size() == 1){
 				String value = con.getValue().get(0);
-				q += " AND " + con.getKey().replace("dataset", datasetName) + ":\"" + value + "\"";				
+				if(value.charAt(0) != '"')
+					value = "\"" + value + "\"";
+				q += " AND " + con.getKey() + ":" + value;				
 			} else{				
 				q += " AND ( ";
 				for(int i = 0; i < con.getValue().size(); ++i){
+					String value = con.getValue().get(i);
+					if(value.charAt(0) != '"')
+						value = "\"" + value + "\"";
 					if(i == 0)
-						q += con.getKey().replace("dataset", datasetName) + ":\"" + con.getValue().get(i) + "\"";	
+						q += con.getKey() + ":" + value;	
 					else
-						q += " OR " + con.getKey().replace("dataset", datasetName) + ":\"" + con.getValue().get(i) + "\"";
+						q += " OR " + con.getKey() + ":" + value;
 				}
 				q += ")";
 			}
@@ -161,33 +166,33 @@ public class queryData {
 		return candidateDocs;
 	}
 	
-	public HashSet<String> query(ArrayList<String> keywords, HttpSolrServer server) throws SolrServerException{
-		HashSet<String> docs = new HashSet<String>();
-		SolrQuery query = new SolrQuery();
-	    query.setStart(0);    
-	    query.set("defType", "edismax");
-	    query.setRows(1000);
-	    QueryResponse response = new QueryResponse();
-	    String q = "";
-	    boolean first = true;
-	    for(String s: keywords){
-	    	if(!first)
-	    		q += " OR ";
-	    	else{
-	    		q += "full_text:(";
-	    		first = false;
-	    	}
-	    	q +=  "\""+ s + "\"";
-	    }
-	    q += ")";
-	    query.setQuery(q);
-		response = server.query(query);
-		SolrDocumentList results = response.getResults();
-		for (int j = 0; j < results.size(); ++j) {
-			docs.add((String) results.get(j).getFieldValue("doc_id"));
-		}
-		return docs;
-	}
+//	public HashSet<String> query(ArrayList<String> keywords, HttpSolrServer server) throws SolrServerException{
+//		HashSet<String> docs = new HashSet<String>();
+//		SolrQuery query = new SolrQuery();
+//	    query.setStart(0);    
+//	    query.set("defType", "edismax");
+//	    query.setRows(1000);
+//	    QueryResponse response = new QueryResponse();
+//	    String q = "";
+//	    boolean first = true;
+//	    for(String s: keywords){
+//	    	if(!first)
+//	    		q += " OR ";
+//	    	else{
+//	    		q += "full_text:(";
+//	    		first = false;
+//	    	}
+//	    	q +=  "\""+ s + "\"";
+//	    }
+//	    q += ")";
+//	    query.setQuery(q);
+//		response = server.query(query);
+//		SolrDocumentList results = response.getResults();
+//		for (int j = 0; j < results.size(); ++j) {
+//			docs.add((String) results.get(j).getFieldValue("doc_id"));
+//		}
+//		return docs;
+//	}
 	
 	
 	

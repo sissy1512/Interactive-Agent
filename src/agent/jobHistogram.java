@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 public class jobHistogram extends histogram{
 	//Record the corresponding paths for each value
 	HashMap<String, HashSet<String>> valuePath = new HashMap<String, HashSet<String>>();
-	double threshold = 0.01;
+	double threshold = 0.02;
 	public void addValue(String word, String path){
 		
 		if(distribute.containsKey(word)){
@@ -31,6 +31,7 @@ public class jobHistogram extends histogram{
 		for(Entry<String, Integer> e: distribute.entrySet()){
 			if((double)e.getValue()/sum > threshold){
 				words.add(e.getKey());
+				//System.out.println(e.getKey() + ":" + (double)e.getValue()/sum);
 			}
 		}
 		return words;

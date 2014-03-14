@@ -154,7 +154,7 @@ public class agent {
 				}
 			}
 		}
-		docs = tr.queryConditionsJob.query(tr.queryConditionsJob.queries, "jobs", server);
+		docs = tr.queryConditionsJob.query(tr.queryConditionsJob.queries, server);
 	}
 	
 	//read and parse input query, decide whether to start the interactive action or not, construct job and resume histograms
@@ -172,7 +172,7 @@ public class agent {
 			QueryParser t = new QueryParser(new FileInputStream(new File(fileName)));
 			ASTStart root = t.Start();
 			root.dump(">");
-			String data = "dataset";
+			String data = "jobs";
 			root.jjtAccept(tr, data);	
 		} catch (Exception e) {
 			System.out.println("Oops.");
@@ -181,7 +181,7 @@ public class agent {
 		}
 		
 		//Decide whether to start the interactive action or not
-		docs = tr.queryConditionsJob.query(tr.queryConditionsJob.queries, "Jobs".toLowerCase(), server);		
+		docs = tr.queryConditionsJob.query(tr.queryConditionsJob.queries, server);		
 		//Too few result
 		if(docs.size() < 3){
 			ArrayList<condition> newQuery = new ArrayList<condition>();
@@ -191,7 +191,7 @@ public class agent {
 				}
 			}
 			tr.queryConditionsJob.queries = newQuery;
-			docs = tr.queryConditionsJob.query(tr.queryConditionsJob.queries, "Jobs".toLowerCase(), server);
+			docs = tr.queryConditionsJob.query(tr.queryConditionsJob.queries, server);
 			if(docs.size() < 3){
 				System.out.println("We just have a few jobs with the position you're looking for.");
 				return;
@@ -302,6 +302,11 @@ public class agent {
 			System.out.println(s + " : " + paths.get(s));
 			resumeHistogram rh = new resumeHistogram(s, server);
 			rh.sumUp();
+			if(rh.path.equals("resumes.experience.title")){
+				for(String st: rh.distribute.keySet()){
+			    	System.out.println(st + ":" + (double)rh.distribute.get(st)/rh.sum);
+				}
+			}
 			rhs.put(s, rh);
 		}
 		

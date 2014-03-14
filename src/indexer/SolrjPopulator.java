@@ -137,7 +137,7 @@ public class SolrjPopulator {
 							sb.append(".");
 						}
 						String path = sb.substring(0, sb.length()-1).toLowerCase();
-						String[] words = fieldValue.toString().split(" ");
+						String[] words = jse.toString().replace(',', ' ').replace('\"', ' ').toLowerCase().split(" ");
 						if(words.length > dict.maxLen){
 							ArrayList<String> re = dict.decomposeText(words);
 							for(String s: re){
@@ -168,7 +168,7 @@ public class SolrjPopulator {
 //				solrDoc.addField("path_substring", path);
 //				solrDoc.addField("value", fieldValue);
 //				solrDoc.addField("path", path);
-				String[] words = fieldValue.toString().split(" ");
+				String[] words = fieldValue.toString().replace(',', ' ').replace('\"', ' ').toLowerCase().split(" ");
 				if(words.length > dict.maxLen){
 					ArrayList<String> re = dict.decomposeText(words);
 					for(String s: re){
@@ -210,7 +210,7 @@ public class SolrjPopulator {
 							sb.append(".");
 						}
 						String path = sb.substring(0, sb.length()-1).toLowerCase();
-						String[] words = fieldValue.toString().split(" ");
+						String[] words = jse.toString().replace(',', ' ').replace('\"', ' ').toLowerCase().split(" ");
 						if(words.length > dict.maxLen){
 							ArrayList<String> re = dict.decomposeText(words);
 							for(String s: re){
@@ -246,7 +246,7 @@ public class SolrjPopulator {
 					sb.append(".");
 				}
 				String path = sb.substring(0, sb.length()-1).toLowerCase();
-				String[] words = fieldValue.toString().split(" ");
+				String[] words = fieldValue.toString().replace(',', ' ').replace('\"', ' ').toLowerCase().split(" ");
 				if(words.length > dict.maxLen){
 					ArrayList<String> re = dict.decomposeText(words);
 					for(String s: re){
