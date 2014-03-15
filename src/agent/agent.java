@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map.Entry;
 
+import javax.swing.JFrame;
+
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
@@ -315,14 +317,21 @@ public class agent {
 	
 	public static void main(String[] args) throws IOException, SolrServerException {
 		// TODO Auto-generated method stub
-		agent ag = new agent();
-		ag.initializeData(args);	
-		HashMap<String, ArrayList<String>> answers = ag.interact();
-		profile p = new profile(answers);
-		HashMap<String, HashMap<String, ArrayList<String>>> results = p.combineItems(p.items);
-		String s = p.genereateProfile(results, 0);
-		System.out.print(s);
+//		agent ag = new agent();
+//		ag.initializeData(args);	
+//		HashMap<String, ArrayList<String>> answers = ag.interact();
+//		profile p = new profile(answers);
+//		HashMap<String, HashMap<String, ArrayList<String>>> results = p.combineItems(p.items);
+//		String s = p.genereateProfile(results, 0);
+//		System.out.print(s);
 		
+		 JFrame mf = new JFrame();
+	        mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        mf.setBounds(100, 20, 1000, 360);
+	        MainPanel mp= new MainPanel();
+	        mp.setLayout(null);
+	        mf.setContentPane(mp);
+	        mf.setVisible(true);   
 		
 		
 		//		HashSet<String> docs2 = tr.queryConditionsResume.query(tr.queryConditionsResume.queries, "Resumes", server);
