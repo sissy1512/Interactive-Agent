@@ -1,21 +1,32 @@
 package agent;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 public class dictionary {
 	HashSet<String> dic = new HashSet<String>();
 	public int maxLen = 4;
+	BufferedReader br;
 	
 	public dictionary(){
-		dic.add("software engineer".toLowerCase());
-		dic.add("JAVA".toLowerCase());
-		dic.add("C++".toLowerCase());
-		dic.add("Python".toLowerCase());
-		dic.add("software development".toLowerCase());
-		dic.add("software".toLowerCase());
-		dic.add("Linux".toLowerCase());
-		dic.add("JavaScript".toLowerCase());
+		String filePath = new File("").getAbsolutePath() + "/src/dic.txt";
+		try {
+			br = new BufferedReader(new FileReader(filePath));		
+			String curLine;
+			while((curLine = br.readLine()) != null){
+				dic.add(curLine.toLowerCase());
+			}
+			br.close();			
+		} catch (Exception e) {
+			System.out.println("Oops.");
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
 	}
 	
 	//Extract meaningful words from long text(represented as words, split by " ")
@@ -44,13 +55,13 @@ public class dictionary {
 		return results;
 	}
 	
-//	public static void main(String[] args){
-//		ArrayList<String> re = new ArrayList<String>();
-//		dictionary diction = new dictionary();
+	public static void main(String[] args){
+		//ArrayList<String> re = new ArrayList<String>();
+		dictionary diction = new dictionary();
 //		String[] words = "software development with \"java\" and c++, or python software engineer".replace(',', ' ').replace('\"', ' ').split(" ");
 //		re = diction.decomposeText(words);
 //		for(String s: re){
 //			System.out.println(s);
 //		}
-//	}
+	}
 }
