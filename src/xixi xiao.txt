@@ -1,0 +1,9 @@
+	skills		java, c++, c#
+	location	
+		city		san diego
+	name		ixi xia
+	experience	
+		title		software engineer
+		organization_name		linkedin
+	education	
+		degree		master

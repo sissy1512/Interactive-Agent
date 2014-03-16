@@ -1,5 +1,8 @@
 package agent;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -46,8 +49,12 @@ public class profile {
 				for(Entry<String,ArrayList<String>> en: tmp.entrySet()){
 					if(en.getKey().equals("")){
 						String value = "";
-						for(String s: en.getValue())
-							value += s.substring(1,s.length()-1) + ", ";
+						for(String s: en.getValue()){
+							if(s.startsWith("\""))
+								value += s.substring(1,s.length()-1) + ", ";
+							else
+								value += s + ", ";
+						}
 						value = value.substring(0, value.length() - 2);
 						profile += en.getKey() + "\t" + value + "\n";
 					} else{
@@ -63,6 +70,20 @@ public class profile {
 			}
 		}
 		return profile;
+	}
+	
+	public void writeProfileFile(String userName, String profile){
+		
+		String filePath = new File("").getAbsolutePath() + "/src/" + userName + ".txt";
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter(filePath));		
+			bw.write(profile);	
+			bw.close();
+		} catch (Exception e) {
+			System.out.println("Oops.");
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
 	}
 	
 	public static void main(String[] args){

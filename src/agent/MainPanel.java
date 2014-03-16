@@ -12,6 +12,7 @@ import javax.swing.*;
 import org.apache.solr.client.solrj.SolrServerException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -33,8 +34,10 @@ public class MainPanel extends JPanel{
     agent ag;
 	
     boolean isQuery = true;
+    boolean isName = true;
 
 	question question;
+	String userName;
 
 	int index = 0;
    	
@@ -68,6 +71,14 @@ public class MainPanel extends JPanel{
         		   if(isQuery){
         			   initialize(ans.getText());
         			   isQuery = false;
+        			   que.setText("What is your name?");
+        			   //nextQuestion(); 
+        		   } else if(isName){
+        			   userName = ans.getText();
+        			   ArrayList<String> tmp = new ArrayList<String>();
+        			   tmp.add(userName);
+        			   ag.pairs.put("name", tmp);
+        			   isName = false;
         			   nextQuestion(); 
         		   }
         		   else{       			   
@@ -76,6 +87,11 @@ public class MainPanel extends JPanel{
 							try {
 								ag.filterJob();
 								rp.intermediate.setText(ag.tr.queryConditionsJob.q);
+								profile p = new profile(ag.pairs);							
+								p.writeProfileFile(userName, p.genereateProfile(p.combineItems(p.items), 1));
+								
+								
+								
 								String output = "";
 						  	  	for(String s: ag.docs){
 						  	  		output += s + "\n";
@@ -86,6 +102,7 @@ public class MainPanel extends JPanel{
 								que.setText("Please input a query:");
 								ans.setText("");
 								isQuery = true;
+								isName = true;
 								index = 0;								
 							} catch (SolrServerException e1) {
 								// TODO Auto-generated catch block

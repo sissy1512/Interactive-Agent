@@ -254,17 +254,7 @@ public class agent {
 	
 	public static void main(String[] args) throws IOException, SolrServerException {
 		// TODO Auto-generated method stub
-		new GUI();		
-		
-		//		HashSet<String> docs2 = tr.queryConditionsResume.query(tr.queryConditionsResume.queries, "Resumes", server);
-//		HashSet<String> docs2 = tr.queryConditionsResume.query(tr.queryConditionsResume.keywords, server);
-//		
-//		//Jobs
-//		agent jobAgent = new agent(server,tr.asked);
-//		jobAgent.freqAttr(docs1);
-//		jobAgent.sortAttr();
-//		question que = new question(jobAgent.rankedAttr,tr.asked);
-//		docs1 = jobAgent.jobFilter(docs1, que);
+		new GUI();			
 	}
 	
 	
