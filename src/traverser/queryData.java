@@ -14,12 +14,13 @@ import org.apache.solr.common.SolrDocumentList;
 public class queryData {
 	//Jobs
 	public ArrayList<condition> queries = new ArrayList<condition>();
+	public String q; 
 	//Resumes
 	public ArrayList<String> keywords = new ArrayList<String>();
 	private boolean companyNamePrefer = false;
 	private boolean companyTypePrefer = false;
 	private boolean areaPrefer = false;
-
+	
 	
 	public void addCondition(String path, String value){
 		condition con = new condition(path, value);
@@ -72,65 +73,9 @@ public class queryData {
 				combination.put(con.getPath(), arr);
 			}
 		}
-		String q = "";
+		q = "";
 		HashSet<String> candidateDocs = new HashSet<String>();
-	//	boolean first = true;
-		for(Entry<String, ArrayList<String>> con : combination.entrySet()){
-//			if(con.getValue().size() == 1){
-//				HashSet<String> tmpDocs = new HashSet<String>();
-//				
-//				String value = con.getValue().get(0);
-//				q = "path:" + con.getKey().replace("dataset", datasetName) + " AND value:" + value;	
-//				query.setQuery(q);
-//				response = server.query(query);
-//				SolrDocumentList results = response.getResults();			
-//			    for (int i = 0; i < results.size(); ++i) {
-//			    	tmpDocs.add((String) results.get(i).getFieldValue("doc_id"));
-//			    }	
-//			    if(first){
-//			    	candidateDocs = tmpDocs;
-//			    	first = false;
-//			    }
-//			    else{
-//			    	HashSet<String> tmp = (HashSet<String>) candidateDocs.clone();
-//			    	for(String s : candidateDocs){
-//			    		if(!tmpDocs.contains(s)){
-//			    			tmp.remove(s);
-//			    		}
-//			    	}
-//			    	if(tmp.size() == 0)
-//			    		return tmp;
-//			    	candidateDocs = tmp;
-//			    }
-//			} else{
-//				HashSet<String> unionDocs = new HashSet<String>();
-//				for(int i = 0; i < con.getValue().size(); ++i){
-//					String value = con.getValue().get(i);
-//					q = "path:\"" + con.getKey().replace("dataset", datasetName) + "\" AND value:\"" + value + "\"";
-//					query.setQuery(q);
-//					response = server.query(query);
-//					SolrDocumentList results = response.getResults();
-//					for (int j = 0; j < results.size(); ++j) {
-//						unionDocs.add((String) results.get(j).getFieldValue("doc_id"));
-//					}	
-//				}
-//				if(first){
-//				    candidateDocs = unionDocs;
-//				    first = false;
-//				}
-//				else{
-//					HashSet<String> tmp = (HashSet<String>) candidateDocs.clone();
-//				    for(String s : candidateDocs){
-//				    	if(!unionDocs.contains(s)){
-//				    		tmp.remove(s);
-//				    	}
-//				    }
-//				    if(tmp.size() == 0)
-//			    		return tmp;
-//				    candidateDocs = tmp;
-//				}
-//			}	
-			
+		for(Entry<String, ArrayList<String>> con : combination.entrySet()){			
 			if(con.getValue().size() == 1){
 				String value = con.getValue().get(0);
 				if(value.charAt(0) != '"')
@@ -152,6 +97,7 @@ public class queryData {
 		}
 		if(q.startsWith(" AND "))
 			q = q.substring(5);
+		System.out.println("query:" + q);
 		query.setQuery(q);
 		response = server.query(query);
 		SolrDocumentList results = response.getResults();

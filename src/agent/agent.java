@@ -3,6 +3,7 @@ package agent;
 import indexer.SolrjPopulator;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -34,10 +35,13 @@ public class agent {
 	public jobHistogram jh = new jobHistogram();
 	public HashMap<String, resumeHistogram> rhs = new HashMap<String,resumeHistogram>();
 	public ArrayList<String> sortedPaths = new ArrayList<String>();
+	QueryParser t = new QueryParser(new ByteArrayInputStream("".getBytes("UTF-8")));
 	static SolrjPopulator pop;
 	static traverser tr;	
 	double threshold = 0.01;
 	
+	HashSet<String> answerWords = new HashSet<String>();
+    HashMap<String, ArrayList<String>> pairs = new HashMap<String, ArrayList<String>>();
 //	public HashMap<String, Integer> attributes = new HashMap<String, Integer>();
 //	public String[] rankedAttr;
 
@@ -53,101 +57,43 @@ public class agent {
         query.set("defType", "edismax");
         query.setRows(1000);
     }
-    
-//	public void freqAttr(HashSet<String> candidateDocs) throws SolrServerException{
-//		for(String s: candidateDocs){
-//			String q = "doc_id:" + s;	
-//			query.setQuery(q);
-//			response = server.query(query);
-//			
-//			SolrDocumentList results = response.getResults();			
-//		    for (int i = 0; i < results.size(); ++i) {
-//		    	for(Entry<String, Object> e: results.get(i).entrySet()){
-////		    		String path = (String) results.get(i).getFieldValue("path");
-//		    		String path = e.getKey();
-//			    	if(attributes.containsKey(path)){
-//			    		int count = attributes.get(path);
-//			    		attributes.put(path, count+1);
-//			    	} else{
-//			    		attributes.put(path, 1);
-//			    	}
-//		    	}
-//		    	
-//		    }	
-//		}
-//	}
-//	
-//	public void sortAttr(){
-//		int size = attributes.size();
-//		ArrayList<String> tmp = new ArrayList<String>();
-//		for(Entry<String, Integer> e: attributes.entrySet()){
-//			int curCount = e.getValue();
-//			String curPath = e.getKey();
-//			size = tmp.size();
-//			int i;
-//			for(i = 0; i < size; ++i){
-//				if(curCount > attributes.get(tmp.get(i))){
-//					tmp.add(i, curPath);
-//					break;
-//				}
-//			}
-//			if(i == size){
-//				tmp.add(curPath);
-//			}
-//		}
-//		size = attributes.size();
-//		rankedAttr = new String[size];
-//		for(int i = 0; i < size; ++i){
-//			rankedAttr[i] = tmp.get(i);
-//		}
-//	}
+   
 	
-	public HashMap<String, ArrayList<String>> interact() throws SolrServerException{
-		//questions and answers
-		HashMap<String, ArrayList<String>> pairs = new HashMap<String, ArrayList<String>>();
-		question que = new question(asked);
-		HashSet<String> answerWords = new HashSet<String>();
-		
-		for(String path: sortedPaths){
-			String curQue = que.formQuestion(path);
-			System.out.println(curQue);
-			try{
-			    BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
-			    String ans = bufferRead.readLine().toLowerCase();
-			    String[] words = ans.split(",");
-			    int len = words.length;
-			    resumeHistogram rh = rhs.get(path);
-			  //drop suffix Resumes.
-			    path = path.substring(8);
-			    for(int i = 0; i < len; ++i){
-			    	words[i] = "\"" + words[i] + "\"";
-			    	answerWords.add(words[i]);
-			    	if(rh.distribute.containsKey(words[i]) && (double)rh.distribute.get(words[i])/rh.sum > threshold){
-			    		if(pairs.containsKey(path)){
-			    			pairs.get(path).add(words[i]);
-			    		}else{
-			    			ArrayList<String> tmp = new ArrayList<String>();
-			    			tmp.add(words[i]);
-			    			pairs.put(path, tmp);
-			    		}
-			    	}
-			    }
-			    
-			}
-			catch(IOException e)
-			{
-				e.printStackTrace();
-			}
-		}
-		
-		filterJob(answerWords);
-		return pairs;
+	public void restart(){
+		asked = new HashMap<String, String>();
+		docs = new HashSet<String>();
+		jh = new jobHistogram();
+		rhs = new HashMap<String,resumeHistogram>();
+		sortedPaths = new ArrayList<String>();
+		tr = new traverser(asked);
 	}
 	
-	private void filterJob(HashSet<String> words) throws SolrServerException{
+    
+	public void onePass(String path, String answer){
+		    String[] words = answer.split(",");
+		    int len = words.length;
+		    resumeHistogram rh = rhs.get(path);
+		  //drop suffix Resumes.
+		    path = path.substring(8);
+		    for(int i = 0; i < len; ++i){
+		    	words[i] = "\"" + words[i] + "\"";
+		    	if(rh.distribute.containsKey(words[i]) && (double)rh.distribute.get(words[i])/rh.sum > threshold){
+			    	answerWords.add(words[i]);
+		    		if(pairs.containsKey(path)){
+		    			pairs.get(path).add(words[i]);
+		    		}else{
+		    			ArrayList<String> tmp = new ArrayList<String>();
+		    			tmp.add(words[i]);
+		    			pairs.put(path, tmp);
+		    		}
+		    	}
+		    }
+	}
+	
+	public void filterJob() throws SolrServerException{
 	//	ArrayList<condition> cons = new ArrayList<condition>();
 		for(Entry<String, HashSet<String>> e: jh.valuePath.entrySet()){
-			if(words.contains(e.getKey())){
+			if(answerWords.contains(e.getKey())){
 				for(String s: e.getValue()){
 					if(!asked.containsKey(s)){
 						condition con = new condition(s, e.getKey());
@@ -160,20 +106,11 @@ public class agent {
 	}
 	
 	//read and parse input query, decide whether to start the interactive action or not, construct job and resume histograms
-	//return sorted resume paths(to form question)
-	public void initializeData(String[] args) throws SolrServerException{
-		
-		//Parse input user query
-		String fileName;
-		if (args.length == 1) {
-			fileName = args[0];
-		} else {
-			fileName = "/Users/xixi/Documents/workspace/TestSolr/src/parser/test.txt";
-		}
+	public void initializeData(String inputQuery) throws SolrServerException{
 		try {
-			QueryParser t = new QueryParser(new FileInputStream(new File(fileName)));
+			t.ReInit(new ByteArrayInputStream(inputQuery.getBytes("UTF-8")));
 			ASTStart root = t.Start();
-			root.dump(">");
+	//		root.dump(">");
 			String data = "jobs";
 			root.jjtAccept(tr, data);	
 		} catch (Exception e) {
@@ -317,22 +254,7 @@ public class agent {
 	
 	public static void main(String[] args) throws IOException, SolrServerException {
 		// TODO Auto-generated method stub
-//		agent ag = new agent();
-//		ag.initializeData(args);	
-//		HashMap<String, ArrayList<String>> answers = ag.interact();
-//		profile p = new profile(answers);
-//		HashMap<String, HashMap<String, ArrayList<String>>> results = p.combineItems(p.items);
-//		String s = p.genereateProfile(results, 0);
-//		System.out.print(s);
-		
-		 JFrame mf = new JFrame();
-	        mf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        mf.setBounds(100, 20, 1000, 360);
-	        MainPanel mp= new MainPanel();
-	        mp.setLayout(null);
-	        mf.setContentPane(mp);
-	        mf.setVisible(true);   
-		
+		new GUI();		
 		
 		//		HashSet<String> docs2 = tr.queryConditionsResume.query(tr.queryConditionsResume.queries, "Resumes", server);
 //		HashSet<String> docs2 = tr.queryConditionsResume.query(tr.queryConditionsResume.keywords, server);

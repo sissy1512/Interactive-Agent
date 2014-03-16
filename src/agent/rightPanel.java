@@ -28,7 +28,6 @@ public class rightPanel extends JTabbedPane{
         JTextArea intermediate = new JTextArea();
         JTextArea result = new JTextArea();
         
-        
 
         public rightPanel()
         {
@@ -36,11 +35,13 @@ public class rightPanel extends JTabbedPane{
                 JScrollPane sp1 =new JScrollPane(intermediate);
                 intermediate.setBounds(0, 5, 550, 300);
                 intermediate.setFont(f); 
-                intermediate.setText("heihei\nxixi\nhaha\nhuhu\nwuwu\nyiyi\naa\noo\nyep!\n");
-                result.setText("a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nyes!\n");
+                intermediate.setEditable(false);
+//                intermediate.setText("heihei\nxixi\nhaha\nhuhu\nwuwu\nyiyi\naa\noo\nyep!\n");
+//                result.setText("a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nyes!\n");
                 JScrollPane sp2 =new JScrollPane(result);
                 result.setBounds(0, 5, 550, 300);
                 result.setFont(f); 
+                result.setEditable(false);
                 this.addTab("intermediate", sp1);
                 this.addTab("result", sp2);
         }

@@ -62,7 +62,7 @@ public class SolrjPopulator {
 //					solrDoc.addField("full_text", text);
 //					server.add(solrDoc);
 //				} 
-					System.out.println(solrDoc.toString());
+//					System.out.println(solrDoc.toString());
 					server.add(solrDoc);
 				} else if(set.dataset.equals("Resumes")){
 					proceedResumePath(prefix, doc.getValue(), id, set.dataset);
@@ -230,7 +230,7 @@ public class SolrjPopulator {
 							solrDoc.addField("word",jse.toString().toLowerCase());
 							solrDoc.addField("path",path);
 							server.add(solrDoc);
-							System.out.println(solrDoc.toString());
+//							System.out.println(solrDoc.toString());
 						}				
 //						prefix.remove(prefix.size()-1);
 						
@@ -256,7 +256,7 @@ public class SolrjPopulator {
 						solrDoc.addField("word",s.toLowerCase());
 						solrDoc.addField("path",path);
 						server.add(solrDoc);
-						System.out.println(solrDoc.toString());
+//						System.out.println(solrDoc.toString());
 					}
 				}
 				else{
@@ -266,7 +266,7 @@ public class SolrjPopulator {
 					solrDoc.addField("word",fieldValue.toString().toLowerCase());
 					solrDoc.addField("path",path);
 					server.add(solrDoc);
-					System.out.println(solrDoc.toString());
+//					System.out.println(solrDoc.toString());
 				}				
 				prefix.remove(prefix.size()-1);
 			}			
