@@ -1,0 +1,6 @@
+	skills		c++
+	location	
+		city		san diego
+	name		
+	education	
+		degree		master

@@ -1,0 +1,10 @@
+	skills		java, java, c++
+	location	
+		state		ca
+		city		san diego, san diego
+	name		xixi
+	experience	
+		title		software engineer intern, software engineer intern
+		organization_name		microsoft
+	education	
+		degree		master, master

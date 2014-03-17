@@ -40,6 +40,9 @@ public class MainPanel extends JPanel{
 	
     boolean isQuery = true;
     boolean isName = true;
+    boolean isElicit = false;
+    int elicitIndex = 0;
+    String elicitPath = "";
 
 	question question;
 	String userName;
@@ -81,42 +84,119 @@ public class MainPanel extends JPanel{
         			   //nextQuestion(); 
         			   printDocs();
         		   } else if(isName){
+        			   rp.result.setText("");
         			   userName = ans.getText();
         			   ArrayList<String> tmp = new ArrayList<String>();
         			   tmp.add(userName);
         			   ag.pairs.put("name", tmp);
         			   isName = false;
         			   nextQuestion(); 
+        		   } else if(isElicit){
+        			   if(ans.getText().toLowerCase().equals("yes")){     				 
+        				   isElicit  = !(ag.onePass(elicitPath, ag.rhs.get(elicitPath).sortedValue[elicitIndex-1]));
+        				   if(index == ag.sortedPaths.size()){
+								try {
+									ag.filterJob();
+									rp.intermediate.setText(ag.tr.queryConditionsJob.q);
+									profile p = new profile(ag.pairs);							
+									p.writeProfileFile(userName, p.genereateProfile(p.combineItems(p.items), 1));
+									
+									
+									
+	//								String output = "";
+	//						  	  	for(String s: ag.docs){
+	//						  	  		output += s + "\n";
+	//						  	  	}
+							  	  	ans.setText("");
+							  	  	printDocs();
+									ag.restart();
+									que.setText("Please input a query:");
+									ans.setText("");
+									isQuery = true;
+									isName = true;
+									index = 0;								
+								} catch (SolrServerException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								} 						
+	        			   }
+        				   else
+        					   nextQuestion();
+        			   }
+        			   else if(elicitIndex < ag.rhs.get(elicitPath).sortedValue.length){
+        				   elicit(elicitPath, elicitIndex++);
+        				   
+        			   } else{
+        				   isElicit = false;
+        				   if(index == ag.sortedPaths.size()){
+								try {
+									ag.filterJob();
+									rp.intermediate.setText(ag.tr.queryConditionsJob.q);
+									profile p = new profile(ag.pairs);							
+									p.writeProfileFile(userName, p.genereateProfile(p.combineItems(p.items), 1));
+									
+									
+									
+	//								String output = "";
+	//						  	  	for(String s: ag.docs){
+	//						  	  		output += s + "\n";
+	//						  	  	}
+							  	  	ans.setText("");
+							  	  	printDocs();
+									ag.restart();
+									que.setText("Please input a query:");
+									ans.setText("");
+									isQuery = true;
+									isName = true;
+									index = 0;								
+								} catch (SolrServerException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								} 						
+	        			   }
+        				   else
+        					   nextQuestion();
+        			   }
+        			   ans.setText("");
         		   }
         		   else{       			   
-        			   ag.onePass(ag.sortedPaths.get(index++), ans.getText());
-        			   if(index == ag.sortedPaths.size()){
-							try {
-								ag.filterJob();
-								rp.intermediate.setText(ag.tr.queryConditionsJob.q);
-								profile p = new profile(ag.pairs);							
-								p.writeProfileFile(userName, p.genereateProfile(p.combineItems(p.items), 1));
-								
-								
-								
-//								String output = "";
-//						  	  	for(String s: ag.docs){
-//						  	  		output += s + "\n";
-//						  	  	}
-						  	  	ans.setText("");
-						  	  	printDocs();
-								ag.restart();
-								que.setText("Please input a query:");
-								ans.setText("");
-								isQuery = true;
-								isName = true;
-								index = 0;								
-							} catch (SolrServerException e1) {
-								// TODO Auto-generated catch block
-								e1.printStackTrace();
-							} 						
-        			   }else{
-        				   nextQuestion(); 
+        			   isElicit = !(ag.onePass(ag.sortedPaths.get(index++), ans.getText()));
+        			   if(ag.sortedPaths.get(index-1).toLowerCase().equals("resumes.summary"))
+        				   isElicit = false;
+        			   if(isElicit){
+        				   ans.setText("");
+        				   elicitPath = ag.sortedPaths.get(index-1);
+        					elicit(elicitPath, 0);
+        					elicitIndex = 1;
+        			   }else{ 
+	        			   if(index == ag.sortedPaths.size()){
+								try {
+									ag.filterJob();
+									rp.intermediate.setText(ag.tr.queryConditionsJob.q);
+									profile p = new profile(ag.pairs);							
+									p.writeProfileFile(userName, p.genereateProfile(p.combineItems(p.items), 1));
+									
+									
+									
+	//								String output = "";
+	//						  	  	for(String s: ag.docs){
+	//						  	  		output += s + "\n";
+	//						  	  	}
+							  	  	ans.setText("");
+							  	  	printDocs();
+									ag.restart();
+									que.setText("Please input a query:");
+									ans.setText("");
+									isQuery = true;
+									isName = true;
+									index = 0;								
+								} catch (SolrServerException e1) {
+									// TODO Auto-generated catch block
+									e1.printStackTrace();
+								} 						
+	        			   }else{
+	        				   nextQuestion(); 
+	        			   }
         			   }
         		   }
         	   }
@@ -174,5 +254,10 @@ public class MainPanel extends JPanel{
     		output += docs.get(0).getAsString() + "\n";    		
     	}
     	rp.result.setText(output);
+    }
+    
+    private void elicit(String path, int index){
+    	histogram rh = ag.rhs.get(path);
+    	que.setText("Do you know about " + rh.sortedValue[index] + " ?");
     }
 }

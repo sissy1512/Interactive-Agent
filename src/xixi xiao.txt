@@ -1,8 +1,9 @@
-	skills		java, c++
+	skills		java
 	location	
 		city		san diego
 	name		Xixi Xiao
 	experience	
-		title		software engineer
+		title		software engineer intern
+		organization_name		microsoft
 	education	
 		degree		master

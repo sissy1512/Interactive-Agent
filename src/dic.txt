@@ -24,12 +24,12 @@ conditions
 cookies	
 email invalid email address	
 last name 
-54  email 
-54  invalid email 
-54  address 
-54  phone 
-54  continue 
-
+email 
+invalid email 
+address 
+phone 
+continue 
+java
 privacy policy	
 the application process	
 the monster terms	

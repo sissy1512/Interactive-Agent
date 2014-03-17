@@ -131,7 +131,7 @@ public class SolrjPopulator {
 						if(words.length > dict.maxLen){
 							ArrayList<String> re = dict.decomposeText(words);
 							for(String s: re){
-									solrDoc.addField(path, s.toLowerCase());
+									solrDoc.addField(path, "\"" + s.toLowerCase() + "\"");
 							}
 						}
 						else{
@@ -162,7 +162,7 @@ public class SolrjPopulator {
 				if(words.length > dict.maxLen){
 					ArrayList<String> re = dict.decomposeText(words);
 					for(String s: re){
-						solrDoc.addField(path, s.toLowerCase());
+						solrDoc.addField(path, "\"" + s.toLowerCase() + "\"");
 					}
 				}
 				else{
@@ -207,7 +207,7 @@ public class SolrjPopulator {
 									SolrInputDocument solrDoc = new SolrInputDocument();
 									solrDoc.addField("id", id+path+s);  
 									solrDoc.addField("doc_id", id); 
-									solrDoc.addField("word",s.toLowerCase());
+									solrDoc.addField("word","\"" + s.toLowerCase() + "\"");
 									solrDoc.addField("path",path);
 									server.add(solrDoc);
 									System.out.println(solrDoc.toString());
@@ -220,7 +220,7 @@ public class SolrjPopulator {
 							solrDoc.addField("word",jse.toString().toLowerCase());
 							solrDoc.addField("path",path);
 							server.add(solrDoc);
-//							System.out.println(solrDoc.toString());
+							System.out.println(solrDoc.toString());
 						}				
 //						prefix.remove(prefix.size()-1);
 						
@@ -243,10 +243,10 @@ public class SolrjPopulator {
 						SolrInputDocument solrDoc = new SolrInputDocument();
 						solrDoc.addField("id", id+path+s);  
 						solrDoc.addField("doc_id", id); 
-						solrDoc.addField("word",s.toLowerCase());
+						solrDoc.addField("word","\"" + s.toLowerCase() + "\"");
 						solrDoc.addField("path",path);
 						server.add(solrDoc);
-//						System.out.println(solrDoc.toString());
+						System.out.println(solrDoc.toString());
 					}
 				}
 				else{
@@ -256,7 +256,7 @@ public class SolrjPopulator {
 					solrDoc.addField("word",fieldValue.toString().toLowerCase());
 					solrDoc.addField("path",path);
 					server.add(solrDoc);
-//					System.out.println(solrDoc.toString());
+					System.out.println(solrDoc.toString());
 				}				
 				prefix.remove(prefix.size()-1);
 			}			

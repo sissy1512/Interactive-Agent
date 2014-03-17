@@ -78,14 +78,16 @@ public class agent {
 	}
 	
     
-	public void onePass(String path, String answer){
+	public boolean onePass(String path, String answer){
 		    String[] words = answer.split(",");
 		    int len = words.length;
 		    histogram rh = rhs.get(path);
 		  //drop suffix Resumes.
 		    path = path.substring(8);
+		    boolean find = false;
 		    for(int i = 0; i < len; ++i){
-		    	words[i] = "\"" + words[i] + "\"";
+		    	if(!words[i].startsWith("\""))
+		    		words[i] = "\"" + words[i] + "\"";
 		    	if(rh.distribute.containsKey(words[i]) && (double)rh.distribute.get(words[i])/rh.sum > threshold){
 			    	answerWords.add(words[i]);
 		    		if(pairs.containsKey(path)){
@@ -95,8 +97,10 @@ public class agent {
 		    			tmp.add(words[i]);
 		    			pairs.put(path, tmp);
 		    		}
+		    		find = true;
 		    	}
 		    }
+		    return find;
 	}
 	
 	public void filterJob() throws SolrServerException{
@@ -246,7 +250,8 @@ public class agent {
 			query.setQuery(q);
 			response = server.query(query);
 			
-			SolrDocumentList results = response.getResults();			
+			SolrDocumentList results = response.getResults();	
+				
 		    for (int i = 0; i < results.size(); ++i) {
 		    	String path = (String) results.get(i).getFieldValue("path");
 		    	if(paths.containsKey(path)){
@@ -295,7 +300,7 @@ public class agent {
 		    	String word = (String) results.get(i).getFieldValue("word");
 		    	rh.addValue(word);
 		    }
-
+		    rh.sortValue();
 			rh.sumUp();
 //			if(rh.key.equals("resumes.experience.title")){
 //				for(String st: rh.distribute.keySet()){
