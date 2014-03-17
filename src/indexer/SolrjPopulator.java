@@ -54,15 +54,6 @@ public class SolrjPopulator {
 					solrDoc.addField("id", id+set.dataset);
 					solrDoc.addField("doc_id", id);
 					proceedJobPath(prefix, doc.getValue(), solrDoc, set.dataset);
-//				if(set.dataset.equals("Resumes")){
-//					String text = "";
-//					for(Entry<String, JsonElement> e: doc.getValue()){
-//						text += e.getKey() + ":" + e.getValue().toString() + " ";
-//					}
-//					solrDoc.addField("full_text", text);
-//					server.add(solrDoc);
-//				} 
-//					System.out.println(solrDoc.toString());
 					server.add(solrDoc);
 				} else if(set.dataset.equals("Resumes")){
 					proceedResumePath(prefix, doc.getValue(), id, set.dataset);
@@ -77,8 +68,9 @@ public class SolrjPopulator {
 		res.setInfoPath("query");
 		String response = res.query(query);
 		JsonParser jsonParser = new JsonParser();
-		JsonArray dataverses = jsonParser.parse(new String(response))
+		JsonArray dataverses = jsonParser.parse(response)
 		        .getAsJsonObject().getAsJsonArray("results");
+//		System.out.print(jsonParser.parse(response));
 		for (JsonElement result : dataverses) {
 			JsonElement jse = jsonParser.parse(result.getAsString());
 			//jse.getAsJsonObject().entrySet();
@@ -95,8 +87,6 @@ public class SolrjPopulator {
 		String query = "use%20dataverse%20"+set.dataverse+";for%20$l%20in%20dataset%20"+set.dataset+"%20return%20$l";
 		String response = res.query(query);
 		JsonParser jsonParser = new JsonParser();
-//		System.out.println(jsonParser.parse("{\"skills\": {{ \"Nanomaterials\", \"Nanoparticles\", \"MATLAB\" }}}"));
-//		System.out.println(response);
 		JsonArray docs = jsonParser.parse(response)
 		        .getAsJsonObject().getAsJsonArray("results");
 		for (JsonElement doc : docs) {

@@ -1,9 +1,8 @@
-	skills		java, c++, c#
+	skills		java, c++
 	location	
 		city		san diego
-	name		ixi xia
+	name		Xixi Xiao
 	experience	
 		title		software engineer
-		organization_name		linkedin
 	education	
 		degree		master

@@ -7,17 +7,25 @@ import java.util.Map.Entry;
 
 public class jobHistogram extends histogram{
 	//Record the corresponding paths for each value
-	HashMap<String, HashSet<String>> valuePath = new HashMap<String, HashSet<String>>();
+	HashMap<String, pathHistogram> valuePath = new HashMap<String, pathHistogram>();
 	double threshold = 0.02;
 	public void addValue(String word, String path){
 		
 		if(distribute.containsKey(word)){
 			int count  = distribute.get(word);
 			distribute.put(word, count+1);
-			if(!valuePath.get(word).contains(path))
-				valuePath.get(word).add(path);
+			pathHistogram ph = valuePath.get(word);
+			if(ph.distribute.containsKey(path)){
+				int c = ph.distribute.get(path);
+				ph.distribute.put(path, c+1);
+			}else{
+				ph.distribute.put(path, 1);
+			}
+//			if(!valuePath.get(word).contains(path))
+//				valuePath.get(word).add(path);
 		} else{
 			distribute.put(word, 1);
+			pathHistogram ph = new pathHistogram(word, server);
 			HashSet<String> tmp = new HashSet<String>();
 			tmp.add(path);
 			valuePath.put(word, tmp);

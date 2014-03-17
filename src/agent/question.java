@@ -29,7 +29,7 @@ public class question {
 		} else if(nouns.length == (startIndex + 2)){
 			question += "Could you tell me more about your " + nouns[startIndex] + ",";
 			switch(nouns[startIndex]){
-				case "location": question += " what " + nouns[startIndex+1] + " are you living in?"; break;
+				case "location": question += " which " + nouns[startIndex+1] + " are you living in?"; break;
 				case "education": {
 					switch(nouns[startIndex+1]){
 						case "univ_name": question += " what university did you attend?"; break;

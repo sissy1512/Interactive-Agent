@@ -11,6 +11,11 @@ import javax.swing.*;
 
 import org.apache.solr.client.solrj.SolrServerException;
 
+import AsterixDB.restAPI;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -72,7 +77,9 @@ public class MainPanel extends JPanel{
         			   initialize(ans.getText());
         			   isQuery = false;
         			   que.setText("What is your name?");
+        			   ans.setText("");
         			   //nextQuestion(); 
+        			   printDocs();
         		   } else if(isName){
         			   userName = ans.getText();
         			   ArrayList<String> tmp = new ArrayList<String>();
@@ -92,12 +99,12 @@ public class MainPanel extends JPanel{
 								
 								
 								
-								String output = "";
-						  	  	for(String s: ag.docs){
-						  	  		output += s + "\n";
-						  	  	}
+//								String output = "";
+//						  	  	for(String s: ag.docs){
+//						  	  		output += s + "\n";
+//						  	  	}
 						  	  	ans.setText("");
-						  	  	rp.result.setText(output);
+						  	  	printDocs();
 								ag.restart();
 								que.setText("Please input a query:");
 								ans.setText("");
@@ -137,12 +144,12 @@ public class MainPanel extends JPanel{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-  	  	String output = "";
-  	  	for(String s: ag.docs){
-  	  		output += s + "\n";
-  	  	}
-  	  	ans.setText("");
-  	  	rp.result.setText(output);
+//  	  	String output = "";
+//  	  	for(String s: ag.docs){
+//  	  		output += s + "\n";
+//  	  	}
+//  	  	ans.setText("");
+//  	  	rp.result.setText(output);
   	  	rp.intermediate.setText(ag.tr.queryConditionsJob.q);  	  	
     }
     
@@ -151,5 +158,21 @@ public class MainPanel extends JPanel{
     	que.setText(curQue);
     	ans.setText("");
     	rp.intermediate.setText(ag.sortedPaths.get(index));
+    }
+    
+    private void printDocs(){
+    	JsonParser jsonParser = new JsonParser();
+    	restAPI res = new restAPI();
+    	String output = "results: " + ag.docs.size() + "\n";
+    	for(String s: ag.docs){
+    		s = s.substring(0, s.length()-3);
+    		String query = "use%20dataverse%20searchAgent;for%20$l%20in%20dataset%20Jobs%20where%20$l.\"id\"%20=%20" + "int16(\"" + s + "\")%20return%20$l";
+    		res.setInfoPath("query");
+    		String response = res.query(query);
+    		JsonArray docs = jsonParser.parse(response)
+    		        .getAsJsonObject().getAsJsonArray("results");
+    		output += docs.get(0).getAsString() + "\n";    		
+    	}
+    	rp.result.setText(output);
     }
 }
